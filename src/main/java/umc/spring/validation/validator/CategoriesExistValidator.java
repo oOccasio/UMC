@@ -23,6 +23,13 @@ public class CategoriesExistValidator implements ConstraintValidator<ExistCatego
 
     @Override
     public boolean isValid(List<Long> values, ConstraintValidatorContext context) {
+
+        if (values == null || values.isEmpty()) {
+            context.disableDefaultConstraintViolation();
+            context.buildConstraintViolationWithTemplate(ErrorStatus.FOOD_CATEGORY_NOT_FOUND.toString()).addConstraintViolation();
+            return false;
+        }
+
         boolean isValid = values.stream()
                 .allMatch(foodCategoryRepository::existsById);
 
