@@ -36,7 +36,7 @@ public class ReviewRestController {
 
     }
 
-    @GetMapping("{memberId}/")
+    @GetMapping("/{memberId}")
     @Operation(summary = "자신의 리뷰 목록 조회 API",
     description = "자신의 리뷰 목록을 조회하는 API며, 페이징을 포함, query String으로 page 번호를 주세요")
     @ApiResponses({
@@ -58,6 +58,7 @@ public class ReviewRestController {
         Page<Review> reviewList = reviewQueryService.getMyReviewList(memberId, page);
 
         return ApiResponse.onSuccess(ReviewConverter.toMyReviewGetListDTO(reviewList));
+
     }
 
 

@@ -33,4 +33,5 @@ public class StoreResponseDTO {
         String body;
         LocalDate createdAt;
     }
+
 }
