@@ -18,7 +18,7 @@ public class ReviewRestController {
 
     private final ReviewCommandService reviewService;
 
-    @PostMapping("/")
+    @PostMapping("{memberId}/")
     public ApiResponse<ReviewResponseDTO.addReviewDTO> addReview(
             @RequestBody @Valid ReviewRequestDTO.addReviewDTO request,
             @RequestParam Long memberId) {

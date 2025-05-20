@@ -17,7 +17,7 @@ public class MemberMissionController {
 
     private final MemberMissionCommandService MemberMissionService;
 
-    @PostMapping("/")
+    @PostMapping("/{memberId}")
     public ApiResponse<MemberMissionResponseDTO.addMemberMission> addMemberMission(
             @RequestBody @Valid MemberMissionRequestDTO.addMemberMission request,
             @RequestParam Long memberId){
