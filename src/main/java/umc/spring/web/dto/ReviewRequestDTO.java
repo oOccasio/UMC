@@ -4,12 +4,14 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Getter;
 import umc.spring.validation.annotation.ExistStore;
 
 public class ReviewRequestDTO {
 
     @Getter
+    @Builder
     public static class addReviewDTO{
 
         @ExistStore
@@ -23,4 +25,6 @@ public class ReviewRequestDTO {
         @Max(5)
         Float score;
     }
+
+
 }
