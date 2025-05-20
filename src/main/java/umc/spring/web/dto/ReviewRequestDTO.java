@@ -20,7 +20,7 @@ public class ReviewRequestDTO {
 
         @NotNull
         @Min(1)
-        @Max(1)
+        @Max(5)
         Float score;
     }
 }

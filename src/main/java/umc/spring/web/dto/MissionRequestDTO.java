@@ -1,5 +1,7 @@
 package umc.spring.web.dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -11,10 +13,13 @@ public class MissionRequestDTO {
     @Builder
     public static class addMissionDTO{
 
+        @NotNull
         Integer reward;
 
+        @NotNull
         LocalDateTime deadline;
 
+        @NotNull
         String missionSpec;
 
     }
