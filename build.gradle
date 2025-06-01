@@ -13,6 +13,22 @@ java {
 	}
 }
 
+def querydslDir = "$projectDir/src/main/generated"
+
+tasks.withType(JavaCompile) {
+	options.annotationProcessorGeneratedSourcesDirectory = file(querydslDir) // 생성된 소스 파일 경로 변경
+}
+
+
+sourceSets {
+	main {
+		java {
+			srcDirs += querydslDir // QueryDSL 디렉토리 경로 추가
+		}
+	}
+}
+
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -31,6 +47,14 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
+	//querydsl
+	implementation "com.querydsl:querydsl-jpa:5.0.0:jakarta"
+	annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
+	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+
 }
 
 tasks.named('test') {
