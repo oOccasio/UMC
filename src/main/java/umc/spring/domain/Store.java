@@ -36,6 +36,7 @@ public class Store extends BaseEntity {
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
 
+
     @Override
     public String toString() {
         return "Store {" +
@@ -46,4 +47,5 @@ public class Store extends BaseEntity {
                 ", region=" + (region != null ? region.getName() : "N/A") + // region의 이름 출력
                 '}';
     }
+
 }
