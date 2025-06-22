@@ -36,8 +36,19 @@ public class SecurityConfig {
 
                 // 5. URL별 권한 설정
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/", "/members/join", "/members/login",
-                                "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers(
+                                "/members/",
+                                "/members/join",
+                                "/members/login",
+                                // Swagger 관련 모든 경로 추가
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/v3/api-docs/**",
+                                "/v3/api-docs.yaml",
+                                "/swagger-resources/**",
+                                "/configuration/**",
+                                "/webjars/**"
+                        ).permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
