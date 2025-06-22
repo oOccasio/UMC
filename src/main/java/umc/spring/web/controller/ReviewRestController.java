@@ -15,6 +15,7 @@ import umc.spring.converter.ReviewConverter;
 import umc.spring.domain.Review;
 import umc.spring.service.reviewService.ReviewCommandService;
 import umc.spring.service.reviewService.ReviewQueryService;
+import umc.spring.validation.annotation.ValidPage;
 import umc.spring.web.dto.ReviewRequestDTO;
 import umc.spring.web.dto.ReviewResponseDTO;
 
@@ -53,7 +54,7 @@ public class ReviewRestController {
     })
     public ApiResponse<ReviewResponseDTO.myReviewGetListDTO> getMyReviewList(
             @PathVariable (name = "memberId") Long memberId,
-            @RequestParam(name = "page") Integer page){
+            @RequestParam(name = "page") @ValidPage Integer page){
 
         Page<Review> reviewList = reviewQueryService.getMyReviewList(memberId, page);
 

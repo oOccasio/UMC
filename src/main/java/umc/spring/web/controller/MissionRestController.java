@@ -16,6 +16,7 @@ import umc.spring.domain.Mission;
 import umc.spring.domain.Review;
 import umc.spring.service.missionService.MissionCommandService;
 import umc.spring.service.missionService.MissionQueryService;
+import umc.spring.validation.annotation.ValidPage;
 import umc.spring.web.dto.MissionRequestDTO;
 import umc.spring.web.dto.MissionResponseDTO;
 import umc.spring.web.dto.ReviewResponseDTO;
@@ -50,7 +51,7 @@ public class MissionRestController {
     })
     public ApiResponse<MissionResponseDTO.getStoreMissionDTOList> getStoreMission(
             @PathVariable (name = "storeId") Long storeId,
-            @RequestParam (name = "page") Integer page){
+            @RequestParam (name = "page") @ValidPage Integer page){
 
         Page<Mission> storeReviewList = missionQueryService.getStoreMission(storeId, page);
 

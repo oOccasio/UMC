@@ -37,6 +37,7 @@ public enum ErrorStatus implements BaseErrorCode {
     //memberMission 에러
     ALREADY_CHALLENGING_MISSION(HttpStatus.BAD_REQUEST, "Mission4003", "이미 도전하고 있는 미션입니다.");
 
+
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;

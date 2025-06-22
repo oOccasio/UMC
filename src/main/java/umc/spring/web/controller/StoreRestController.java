@@ -15,6 +15,7 @@ import umc.spring.converter.StoreConverter;
 import umc.spring.domain.Review;
 import umc.spring.service.storeService.StoreQueryService;
 import umc.spring.validation.annotation.ExistStore;
+import umc.spring.validation.annotation.ValidPage;
 import umc.spring.web.dto.StoreResponseDTO;
 
 @RestController
@@ -42,7 +43,7 @@ public class StoreRestController {
     })
     public umc.spring.apiPayload.ApiResponse<StoreResponseDTO.ReviewPreViewListDTO> getReviewList(
             @ExistStore @PathVariable(name = "storeId") Long storeId,
-            @RequestParam(name = "page") Integer page){
+            @RequestParam(name = "page") @ValidPage Integer page){
             Page<Review> reviewList = storeQueryService.getReviewList(storeId, page);
             return umc.spring.apiPayload.ApiResponse.onSuccess(StoreConverter.reviewPreViewListDTO(reviewList));
     }
