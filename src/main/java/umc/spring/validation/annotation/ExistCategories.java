@@ -1,6 +1,7 @@
 package umc.spring.validation.annotation;
 
 import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 import umc.spring.validation.validator.CategoriesExistValidator;
 
 import java.lang.annotation.*;
@@ -11,5 +12,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExistCategories {
 
-    String message() default "해당하는 카테고리가 존재하지 않습니다.";
+    String message() default "해당하는 카테고리가 존재하지 않습니다";
+
+    Class<?>[] groups() default {};  // ✅ 이 부분 추가!
+
+    Class<? extends Payload>[] payload() default {};  // ✅ 이 부분도 추가!
 }
